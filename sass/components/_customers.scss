@@ -4,8 +4,16 @@
 
 .customers-list {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  margin: -15px;
+
+  @media screen and (max-width: 1199px) {
+    flex-wrap: wrap;
+  }
+
+  @media screen and (min-width: $desctop) {
+    align-items: center;
+    justify-content: space-between;
+  }
 
   &__link {
     display: flex;
@@ -13,10 +21,25 @@
     align-items: center;
     border: 1px solid #afb1b8;
     border-radius: 4px;
-    width: 170px;
     height: 92px;
 
     transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  &__item {
+    @media screen and (min-width: $tablet) and (max-width: 1199px) {
+      width: calc((100% - 3 * 30px) / 3);
+      margin: 15px;
+    }
+
+    @media screen and (max-width: 767px) {
+      width: calc((100% - 2 * 30px) / 2);
+      margin: 15px;
+    }
+
+    @media screen and (min-width: $desctop) {
+      width: calc(100% - 6 * 30px);
+      margin: 15px;
+    }
   }
 }
 
