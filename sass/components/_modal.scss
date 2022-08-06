@@ -1,253 +1,68 @@
 .backdrop {
+  padding: 94px 15px;
   position: fixed;
-  top: 0;
-  bottom: 0;
   left: 0;
-  right: 0;
-  z-index: 40;
-
-  visually: scroll;
-
+  top: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.backdrop.is-hidden .modal {
-  transform: scale(2);
+  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: visible;
+  overflow-y: scroll;
+  z-index: 4;
 }
 
-.is-hidden {
+.backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
-  visibility: hidden;
+
+  @media screen and (min-width: 768px) {
+    .backdrop.is-hidden .modal {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  }
 }
 
+/* MODAL */
 .modal {
   position: relative;
-  width: 100%;
   padding: 40px;
 
+  background-color: #ffffff;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  background-color: $primary-background;
 
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  @media screen and (min-width: $desctop) {
+  @media screen and (min-width: 768px) {
     position: absolute;
-
-    width: 528px;
-    height: 581px;
-  }
-  @media screen and (min-width: $mobile) and (max-width: 1199px) {
     width: 450px;
-    height: 609px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
   }
-
-  &__button {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-
-    background-color: $primary-background;
-    width: 30px;
-    height: 30px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    cursor: pointer;
+  @media screen and (min-width: 1200px) {
+    width: 528px;
   }
 }
-
-.modal__icon {
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  .modal__button:hover &,
-  .modal__button:focus & {
-    fill: $accent-color;
-  }
-}
-
-.modal-title {
-  color: $primary-text-title;
-
-  font-weight: 700;
-  font-size: 20px;
-
-  text-align: center;
-
-  padding-bottom: 12px;
-
-  @media screen and (max-width: 1199px) {
-    line-height: 1.5;
-  }
-  @media screen and (min-width: $desctop) {
-  }
-  line-height: 1.15;
-}
-
-.modal-form {
-  width: 100%;
-  @media screen and (min-width: $mobile) and (max-width: 1199px) {
-    min-width: 370px;
-  }
-  @media screen and (min-width: $desctop) {
-    width: 448px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  &__item {
-    margin-bottom: 10px;
-    position: relative;
-  }
-
-  &__label textarea::placeholder {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.14;
-    letter-spacing: 0.01em;
-
-    color: rgba(117, 117, 117, 0.5);
-  }
-
-  &__text {
-    position: relative;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.17;
-    letter-spacing: 0.01em;
-
-    color: $title-text-color;
-  }
-
-  &__wrap {
-    position: relative;
-  }
-}
-
-.modal-form__input {
-  color: $primary-text-title;
-  font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: 0.01em;
-
-  width: 100%;
-  display: block;
-  outline: none;
-  border: 1px solid rgba(33, 33, 33, 0.2);
-  border-radius: 4px;
-  height: 40px;
-  padding-left: 42px;
-  margin-top: 4px;
-
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:focus {
-    border: 1px solid $accent-color;
-  }
-}
-
-.modal-form__icon {
+.modal__button {
   position: absolute;
-  top: 50%;
-  left: 12px;
-
-  transform: translateY(-50%);
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.modal-form__input:focus ~ .modal-form__icon {
-  fill: $accent-color;
-}
-
-.modal-area {
-  padding: 10px 12px;
-  height: 120px;
-  resize: none;
-}
-
-.modal-checkbox {
-  margin-top: 20px;
-
-  &__label {
-    display: flex;
-    align-items: center;
-    @media screen and (min-width: $desctop) {
-      margin-left: 13px;
-    }
-  }
-
-  &__input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-
-    position: absolute;
-  }
-
-  &__icon {
-    display: inline-block;
-    width: 16px;
-    height: 15px;
-    border-radius: 2px;
-    border: 2px solid $primary-text-title;
-    cursor: pointer;
-  }
-
-  &__text {
-    color: $title-text-color;
-
-    @media screen and (max-width: 1199px) {
-      font-size: 12px;
-      line-height: 1.16;
-
-      margin-right: 1px;
-      margin-left: 7px;
-    }
-
-    @media screen and (min-width: $desctop) {
-      font-size: 14px;
-      line-height: 1.7;
-
-      margin-right: 5px;
-      margin-left: 7px;
-    }
-  }
-
-  &__link {
-    color: $accent-color;
-    text-decoration: underline;
-    margin-right: 0px;
-    margin-left: 0px;
-  }
-}
-
-.modal-checkbox__input:checked + .modal-checkbox__icon {
-  background-color: $accent-color;
-  border-color: $accent-color;
-  background-image: url(../images/iconcheck.svg);
-  background-size: contain;
-  background-origin: border-box;
-}
-
-.modal-btn {
-  display: flex;
+  right: 8px;
+  top: 8px;
+  display: inline-flex;
   justify-content: center;
-}
-
-.modal-button {
-  padding: 10px 55px 10px 56px;
-
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
-    background-color: $but;
+    fill: $accent-color;
   }
 }
