@@ -154,6 +154,7 @@ img {
   font-weight: 700;
   font-size: 26px;
   line-height: 1.19;
+  margin-right: 70px;
 }
 .container-header__logo > span {
   color: #2196f3;
@@ -529,6 +530,7 @@ button:focus > svg {
   color: #ffffff;
   font-weight: 900;
   text-align: center;
+  line-height: 1.62;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 30px;
@@ -1210,7 +1212,7 @@ button:focus > svg {
 }
 @media screen and (min-width: 480px) {
   .footer-mailing__input {
-    min-width: 450px;
+    min-width: 358px;
   }
 }
 
@@ -1555,4 +1557,4 @@ button:focus > svg {
 }
 .modal-button:hover, .modal-button:focus {
   background-color: #188ce8;
-}/*# sourceMappingURL=main.css.map */
+}

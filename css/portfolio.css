@@ -154,6 +154,7 @@ img {
   font-weight: 700;
   font-size: 26px;
   line-height: 1.19;
+  margin-right: 70px;
 }
 .container-header__logo > span {
   color: #2196f3;
@@ -946,7 +947,7 @@ button:focus > svg {
 }
 @media screen and (min-width: 480px) {
   .footer-mailing__input {
-    min-width: 450px;
+    min-width: 358px;
   }
 }
 
@@ -1013,4 +1014,4 @@ button:focus > svg {
 }
 .mailin-button__icon {
   margin-left: 10px;
-}/*# sourceMappingURL=portfolio.css.map */
+}
